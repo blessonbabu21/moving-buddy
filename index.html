@@ -139,11 +139,6 @@
       position: sticky;
       top: 0;
       z-index: 99;
-      transition: var(--transition);
-    }
-
-    nav.hide-on-scroll {
-      transform: translateY(-100%);
     }
 
     .nav-container {
@@ -201,7 +196,7 @@
 
     /* Hero Section */
     .hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1926&q=80') no-repeat center center/cover;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1551524559-8af4e6624178?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1926&q=80') no-repeat center center/cover;
       color: var(--white);
       padding: 5rem 0;
       text-align: center;
@@ -907,24 +902,12 @@
     
     // Back to Top Button
     const backToTopButton = document.getElementById('backToTop');
-    const nav = document.querySelector('nav');
     
     window.onscroll = function() {
       const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
       
       // Show/hide Back to Top button
       backToTopButton.style.display = scrollTop > 100 ? 'block' : 'none';
-      
-      // Hide nav on scroll for mobile (≤768px)
-      if (window.innerWidth <= 768) {
-        if (scrollTop > 50) {
-          nav.classList.add('hide-on-scroll');
-        } else {
-          nav.classList.remove('hide-on-scroll');
-        }
-      } else {
-        nav.classList.remove('hide-on-scroll');
-      }
     };
     
     backToTopButton.addEventListener('click', () => {
