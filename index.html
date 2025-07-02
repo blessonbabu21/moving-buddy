@@ -5,10 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Moving Buddy - Your Friendly Moving Company</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a56d4;
+      --secondary: #3f37c9;
+      --accent: #4895ef;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --gray: #6c757d;
+      --light-gray: #e9ecef;
+      --white: #ffffff;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.15);
+      --transition: all 0.3s ease;
+      --border-radius: 8px;
+      --border-radius-lg: 12px;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -16,242 +38,581 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f8f9fa;
-      color: #333;
+      font-family: 'Open Sans', sans-serif;
+      color: var(--dark);
+      background-color: var(--light);
+      line-height: 1.6;
       padding-bottom: 120px;
     }
 
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    h2 {
+      font-size: 2rem;
+      position: relative;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--primary-dark);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Header */
     header {
-      background-color: #007bff;
-      color: white;
-      padding: 1.5rem 1rem;
-      text-align: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--white);
+      padding: 1.5rem 0;
+      box-shadow: var(--shadow);
+      position: relative;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
     }
 
     .logo-container {
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 1rem;
-      flex-wrap: wrap;
-      text-align: center;
     }
 
     .logo-container img {
-      height: 100px;
-      max-width: 100%;
+      height: 80px;
+      width: auto;
     }
 
-    .logo-title {
-      font-size: 2.5rem;
-      margin: 0;
+    .logo-text h1 {
+      font-size: 2rem;
+      margin-bottom: 0.25rem;
+      color: var(--white);
     }
 
+    .logo-text p {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-bottom: 0;
+    }
+
+    /* Navigation */
     nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      background-color: #0056b3;
+      background-color: var(--white);
+      box-shadow: var(--shadow);
       position: sticky;
       top: 0;
-      z-index: 100;
-      transition: transform 0.3s ease-in-out;
+      z-index: 99;
+      transition: var(--transition);
     }
 
     nav.hide-on-scroll {
       transform: translateY(-100%);
     }
 
-    nav a {
-      color: white;
-      padding: 0.75rem 1rem;
-      text-decoration: none;
-      font-weight: 600;
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
       display: block;
-      transition: background-color 0.3s ease;
+      padding: 1rem 1.25rem;
+      font-weight: 600;
+      color: var(--dark);
+      transition: var(--transition);
     }
 
-    nav a:hover {
-      background-color: #004080;
+    .nav-links a:hover {
+      color: var(--primary);
     }
 
-    section {
-      padding: 2rem 1rem;
-    }
-
-    .container {
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    footer {
-      background-color: #007bff;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      position: fixed;
-      width: 100%;
+    .nav-links a::after {
+      content: '';
+      position: absolute;
       bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 3px;
+      background: var(--primary);
+      transition: var(--transition);
     }
 
-    form {
-      background-color: white;
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      max-width: 600px;
-      margin: 1rem auto 0;
+    .nav-links a:hover::after {
+      width: 70%;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--dark);
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1603126857599-f6e157fa2fe6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1926&q=80') no-repeat center center/cover;
+      color: var(--white);
+      padding: 5rem 0;
+      text-align: center;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--white);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      background-color: var(--primary);
+      color: var(--white);
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      color: var(--white);
+    }
+
+    .btn-lg {
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+    }
+
+    /* Sections */
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.25rem;
+    }
+
+    .section-title h2::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .section-title p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--gray);
+    }
+
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .service-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* About */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+    }
+
+    /* Contact Form */
+    .contact {
+      background-color: var(--white);
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: var(--light);
+      border-radius: var(--border-radius-lg);
+      padding: 3rem;
+      box-shadow: var(--shadow);
     }
 
     .form-group {
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
     }
 
     label {
       display: block;
       margin-bottom: 0.5rem;
       font-weight: 600;
+      color: var(--dark);
     }
 
-    input, textarea, select {
+    input,
+    textarea,
+    select {
       width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
+      padding: 0.875rem 1rem;
+      border: 1px solid var(--light-gray);
+      border-radius: var(--border-radius);
+      font-family: 'Open Sans', sans-serif;
       font-size: 1rem;
-      transition: border-color 0.3s ease;
-      font-family: 'Poppins', sans-serif;
+      transition: var(--transition);
     }
 
-    input:focus, textarea:focus, select:focus {
-      border-color: #007bff;
+    input:focus,
+    textarea:focus,
+    select:focus {
       outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
     }
 
-    form button[type="submit"] {
-      padding: 1.25rem 2.5rem;
-      font-size: 1.25rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border-radius: 50px;
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.1rem;
+    }
+
+    /* Contact Info */
+    .contact-info {
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    .contact-methods {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
       margin-top: 1.5rem;
-      box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
-      transition: all 0.3s ease;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-      border: none;
     }
 
-    form button[type="submit"]:hover {
-      background-color: #0069d9;
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--dark);
+    }
+
+    .contact-icon {
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--dark);
+      color: var(--white);
+      padding: 2rem 0;
+      text-align: center;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+
+    .footer-column h3 {
+      color: var(--white);
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--primary);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--gray);
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+      padding-left: 5px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      color: var(--white);
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background-color: var(--primary);
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
     }
 
-    form button[type="submit"]:active {
-      transform: translateY(1px);
+    .copyright {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--gray);
+      font-size: 0.875rem;
     }
 
+    /* Back to Top */
     #backToTop {
       display: none;
       position: fixed;
-      bottom: 80px;
-      right: 20px;
+      bottom: 2rem;
+      right: 2rem;
       z-index: 99;
-      font-size: 24px;
-      border: none;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-      padding: 12px 16px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      transition: all 0.3s ease;
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      font-size: 1.25rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
     }
 
     #backToTop:hover {
-      background-color: #0056b3;
-      transform: translateY(-3px);
+      background-color: var(--primary-dark);
+      transform: translateY(-5px);
     }
 
-    ul {
-      list-style-type: none;
-    }
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .about-content {
+        grid-template-columns: 1fr;
+      }
 
-    ul li {
-      padding: 0.5rem 0;
-      position: relative;
-      padding-left: 1.5rem;
-    }
-
-    ul li:before {
-      content: "✓";
-      color: #007bff;
-      position: absolute;
-      left: 0;
+      .about-image {
+        order: -1;
+      }
     }
 
     @media (max-width: 768px) {
-      .logo-title {
-        font-size: 1.8rem;
-      }
-
-      .logo-container {
-        flex-direction: column;
-      }
-
-      nav {
-        flex-direction: column;
-      }
-
-      nav a {
-        padding: 1rem;
+      .header-content {
+        justify-content: center;
         text-align: center;
-        border-bottom: 1px solid rgba(255,255,255,0.2);
       }
 
-      section h2 {
-        font-size: 1.5rem;
+      .mobile-menu-btn {
+        display: block;
       }
 
-      form button[type="submit"] {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: var(--white);
+        flex-direction: column;
+        padding: 2rem;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        transition: var(--transition);
+        z-index: 1000;
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+
+      .nav-links li {
         width: 100%;
+      }
+
+      .nav-links a {
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--light-gray);
+      }
+
+      .nav-links a::after {
+        display: none;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      h2 {
+        font-size: 1.75rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
       }
     }
 
-    @media (max-width: 480px) {
-      header {
-        padding: 1rem;
+    @media (max-width: 576px) {
+      .form-container {
+        padding: 2rem 1.5rem;
       }
 
-      .logo-title {
+      section {
+        padding: 3rem 0;
+      }
+
+      .section-title h2 {
         font-size: 1.5rem;
-      }
-
-      .logo-container img {
-        height: 80px;
-      }
-
-      nav a {
-        font-size: 0.95rem;
-      }
-
-      #backToTop {
-        right: 10px;
-        bottom: 70px;
-        padding: 10px 14px;
-        font-size: 20px;
-      }
-
-      form button[type="submit"] {
-        padding: 1rem 1.5rem;
-        font-size: 1.1rem;
       }
     }
   </style>
@@ -259,152 +620,317 @@
 <body>
 
   <header>
-    <div class="logo-container">
-      <img src="logo.png" alt="Moving Buddy Logo" />
-      <div>
-        <h1 class="logo-title">Moving Buddy</h1>
-        <p>Your Friendly Moving Company</p>
+    <div class="container header-content">
+      <div class="logo-container">
+        <img src="logo.png" alt="Moving Buddy Logo" />
+        <div class="logo-text">
+          <h1>Moving Buddy</h1>
+          <p>Your Friendly Moving Company</p>
+        </div>
       </div>
     </div>
   </header>
 
   <nav>
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#about">About Us</a>
-    <a href="#contact">Get Quote</a>
-    <a href="#contact-info">Contact</a>
+    <div class="container nav-container">
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Get Quote</a></li>
+      </ul>
+    </div>
   </nav>
 
-  <section id="home" class="container">
-    <h2>WELCOME TO MOVING BUDDY!</h2>
-    <p>We are a Toronto-based moving company run by three friends passionate about helping people move stress-free and affordably.</p>
-    <p>Our team of movers will handle your belongings with care and ensure a smooth transition to your new home or office.</p>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Stress-Free Moving in Toronto</h1>
+      <p>Let our professional team handle your move with care and efficiency. We make moving easy!</p>
+      <a href="#contact" class="btn btn-lg">Get Free Quote</a>
+    </div>
   </section>
 
-  <section id="services" class="container">
-    <h2>OUR SERVICES</h2>
-    <ul>
-      <li>Local Residential Moving</li>
-      <li>Apartment and Condo Moves</li>
-      <li>Furniture Delivery</li>
-      <li>Loading and Unloading Help</li>
-      <li>Small Office Relocation</li>
-      <li>Packing and Unpacking Services</li>
-      <li>Last-Minute Moves</li>
-      <li>Storage Solutions</li>
-    </ul>
+  <section id="services">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Moving Services</h2>
+        <p>We offer comprehensive moving solutions tailored to your needs</p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-home"></i>
+          </div>
+          <h3>Residential Moving</h3>
+          <p>Full-service moving for homes of all sizes with careful handling of your belongings.</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <h3>Apartment Moving</h3>
+          <p>Specialized services for apartment and condo moves with elevator booking assistance.</p>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <h3>Office Relocation</h3>
+          <p>Minimal downtime business moves with after-hours options available.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <section id="about" class="container">
-    <h2>ABOUT US</h2>
-    <p>We started Moving Buddy to offer fast, reliable, and affordable moving services in the GTA. Our mission is simple: Make moving day easy and stress-free for you.</p>
+  <section id="about">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>About Moving Buddy</h2>
+          <p>Founded by three friends in Toronto, Moving Buddy was born out of a desire to make moving stress-free and affordable for everyone. We understand how overwhelming moving can be, which is why we've dedicated ourselves to providing exceptional service at fair prices.</p>
+          <p>What sets us apart is our commitment to customer satisfaction. We don't just move your items - we build relationships with our clients based on trust, reliability, and outstanding service.</p>
+        </div>
+        <!--<div class="about-image">
+          <img src="https://images.unsplash.com/photo-1600705727106-8580801d5b9b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Moving Buddy team">
+        </div>-->
+      </div>
+    </div>
   </section>
 
-  <section id="contact" class="container">
-    <h2>GET YOUR FREE MOVING QUOTE TODAY!</h2>
-    <p>Fill out the form below and we'll get back to you within 24 hours with a personalized quote.</p>
-
-    <form action="https://formspree.io/f/xkgbejrw" method="POST">
-      <input type="hidden" name="_captcha" value="false">
-
-      <div class="form-group">
-        <label for="name">Full Name*</label>
-        <input type="text" id="name" name="name" required />
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2>Get Your Free Moving Quote</h2>
+        <p>Fill out the form below and we'll get back to you within 24 hours with a personalized quote</p>
       </div>
-
-      <div class="form-group">
-        <label for="email">Email*</label>
-        <input type="email" id="email" name="email" required />
+      
+      <div class="form-container">
+        <form action="https://formspree.io/f/xkgbejrw" method="POST">
+          <input type="hidden" name="_captcha" value="false">
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name*</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email*</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone Number*</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="date">Moving Date</label>
+              <input type="date" id="date" name="date">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="pickup">Moving From (Address)</label>
+            <input type="text" id="pickup" name="pickup">
+          </div>
+          
+          <div class="form-group">
+            <label for="dropoff">Moving To (Address)</label>
+            <input type="text" id="dropoff" name="dropoff">
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="service">Service Needed</label>
+              <select id="service" name="service">
+                <option value="">Select a service</option>
+                <option value="residential">Residential Moving</option>
+                <option value="apartment">Apartment/Condo Moving</option>
+                <option value="office">Office Relocation</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="size">Home Size</label>
+              <select id="size" name="size">
+                <option value="">Select size</option>
+                <option value="studio">Studio/Bachelor</option>
+                <option value="1bed">1 Bedroom</option>
+                <option value="2bed">2 Bedrooms</option>
+                <option value="3bed">3 Bedrooms</option>
+                <option value="4bed">4+ Bedrooms</option>
+                <option value="house">Small House</option>
+                <option value="large-house">Large House</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Additional Details</label>
+            <textarea id="message" name="message" placeholder="Tell us about your move - any special items, elevator access, parking restrictions, etc."></textarea>
+          </div>
+          
+          <button type="submit" class="btn submit-btn">
+            <i class="fas fa-paper-plane"></i> Request Free Quote
+          </button>
+        </form>
+        
+        <div class="contact-info">
+          <h3>Prefer to talk to someone?</h3>
+          <div class="contact-methods">
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>
+                <a href="tel:+19059241896">(905) 924-1896</a>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <a href="mailto:jaigychacko@gmail.com">jaigychacko@gmail.com</a>
+              </div>
+            </div>
+            
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div>
+                <span>Mon-Sun: 7am-9pm</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="form-group">
-        <label for="phone">Phone Number*</label>
-        <input type="tel" id="phone" name="phone" required />
-      </div>
-
-      <div class="form-group">
-        <label for="pickup">Pickup Address</label>
-        <input type="text" id="pickup" name="pickup" />
-      </div>
-
-      <div class="form-group">
-        <label for="dropoff">Drop-off Address</label>
-        <input type="text" id="dropoff" name="dropoff" />
-      </div>
-
-      <div class="form-group">
-        <label for="date">Preferred Moving Date</label>
-        <input type="date" id="date" name="date" />
-      </div>
-
-      <div class="form-group">
-        <label for="service">Service Needed</label>
-        <select id="service" name="service">
-          <option value="">Select a service</option>
-          <option value="residential">Residential Moving</option>
-          <option value="apartment">Apartment/Condo Moving</option>
-          <option value="furniture">Furniture Delivery</option>
-          <option value="office">Office Relocation</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="message">Additional Details</label>
-        <textarea id="message" name="message" rows="4"></textarea>
-      </div>
-
-      <button type="submit">
-        <span style="font-size: 1.1em;">📦</span> REQUEST FREE QUOTE
-      </button>
-    </form>
-  </section>
-
-  <section id="contact-info" class="container" style="text-align: center; margin-bottom: 2rem;">
-    <h3>Have questions? Get in touch!</h3>
-    <p>Email: <a href="mailto:jaigychacko@gmail.com" style="color: #007bff;">jaigychacko@gmail.com</a></p>
-    <p>Phone: <a href="tel:+19059241896" style="color: #007bff;">+1 (905) 924-1896</a></p>
+    </div>
   </section>
 
   <footer>
-    <p>&copy; 2025 Moving Buddy. All rights reserved.</p>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Moving Buddy</h3>
+          <p>Your friendly neighborhood moving company serving the Greater Toronto Area with care and professionalism since 2020.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Get Quote</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Services</h3>
+          <ul class="footer-links">
+            <li><a href="#">Residential Moving</a></li>
+            <li><a href="#">Apartment Moving</a></li>
+            <li><a href="#">Office Relocation</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Contact Us</h3>
+          <ul class="footer-links">
+            <li><i class="fas fa-map-marker-alt"></i> Toronto, ON</li>
+            <li><i class="fas fa-phone"></i> (905) 924-1896</li>
+            <li><i class="fas fa-envelope"></i> jaigychacko@gmail.com</li>
+            <li><i class="fas fa-clock"></i> Mon-Sun: 7am-9pm</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2025 Moving Buddy. All rights reserved.</p>
+      </div>
+    </div>
   </footer>
 
-  <button id="backToTop" title="Go to top" aria-label="Back to top">&#8679;</button>
+  <button id="backToTop" title="Go to top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
   <script>
-    const backToTopButton = document.getElementById("backToTop");
-    const nav = document.querySelector("nav");
-
-    window.onscroll = function () {
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // Back to Top Button
+    const backToTopButton = document.getElementById('backToTop');
+    const nav = document.querySelector('nav');
+    
+    window.onscroll = function() {
       const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
-
+      
       // Show/hide Back to Top button
-      backToTopButton.style.display = scrollTop > 100 ? "block" : "none";
-
+      backToTopButton.style.display = scrollTop > 100 ? 'block' : 'none';
+      
       // Hide nav on scroll for mobile (≤768px)
       if (window.innerWidth <= 768) {
         if (scrollTop > 50) {
-          nav.classList.add("hide-on-scroll");
+          nav.classList.add('hide-on-scroll');
         } else {
-          nav.classList.remove("hide-on-scroll");
+          nav.classList.remove('hide-on-scroll');
         }
       } else {
-        nav.classList.remove("hide-on-scroll");
+        nav.classList.remove('hide-on-scroll');
       }
     };
-
-    backToTopButton.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
+    
+    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener("click", function (e) {
+      anchor.addEventListener('click', function(e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-          behavior: "smooth",
-        });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
       });
     });
   </script>
